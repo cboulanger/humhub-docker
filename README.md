@@ -16,4 +16,4 @@ an run it:
 
 ```docker run --name humhub -d cboulanger/humhub-docker && docker inspect humhub |grep IPAddress```
 
-You can migrate data from and to a different container.
+You can also [migrate data from and to a different container](humhub-data/readme.md).
