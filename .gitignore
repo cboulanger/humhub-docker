@@ -1,0 +1,6 @@
+*.crt
+*.key
+*.tgz
+*.sql
+name.txt
+cid.txt
