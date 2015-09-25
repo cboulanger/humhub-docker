@@ -3,15 +3,17 @@ to this container, here's how:
 
 - create a dump of the old data with
   `mysqldump -u<user> -p<password> <name of db> > humhub.sql`
-  and place `humhub.sql` in the `humhub-data` folder
+  and place `humhub.sql` in this folder
 
 - create a zipped tarball of the `uploads` folder:
   `cd /path/to/humhub/uploads; tar -czf uploads.tgz ./uploads`
-  and place `uploads.tgz` in the `humhub-data` folder
+  and place `uploads.tgz` in this folder
 
-Once the data is in a container, you can easily export it with the `/export.sh` script. The resulting files are placed into the folder `/tmp/humhub-data` and can be transferred to an empty new container. 
+- then run `docker build`.
 
-If you have SSL/TLS certificates fpr the site that should be installed, place the files in this folder, too, named
+Once the data is in a container, you can easily export it with the `/export.sh` script. The resulting files are placed into the folder `/tmp/humhub-data` and can be transferred to this folder before running `docker build`.
+
+If you have SSL/TLS certificates for the site that should be installed, place the files in this folder, too, named
   - `certificate.crt` The domain certificate
   - `certificate.key`  The private key
   - `chain.crt`  The certificate chain
