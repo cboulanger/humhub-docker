@@ -6,11 +6,12 @@ to this container, here's how:
   and place `humhub.sql` in the `humhub-data` folder
 
 - create a zipped tarball of the `uploads` folder:
-  `tar -czf uploads.tgz /path/to/humhub/uploads`
-  and place `uploads.tgz` in thein the `humhub-data` folder
+  `cd /path/to/humhub/uploads; tar -czf uploads.tgz ./uploads`
+  and place `uploads.tgz` in the `humhub-data` folder
 
-- if you have SSL certificates on the site, place the files in this folder, too,
-  named
+Once the data is in a container, you can easily export it with the `/export.sh` script. The resulting files are placed into the folder `/tmp/humhub-data` and can be transferred to an empty new container. 
+
+If you have SSL/TLS certificates fpr the site that should be installed, place the files in this folder, too, named
   - `certificate.crt` The domain certificate
   - `certificate.key`  The private key
   - `chain.crt`  The certificate chain
