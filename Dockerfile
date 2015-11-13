@@ -1,6 +1,6 @@
 # Humhub on Turnkeylinux
 
-FROM cboulanger/turnkeylinux-lamp
+FROM cboulanger/turnkeylinux-lamp:v14.0
 MAINTAINER Christian Boulanger "info@bibliograph.org"
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get install -y -q php5-gd php5-curl php5-sqlite php5-ldap php5-intl php-apc wget cron
 
-ENV HUMHUB_VERSION 0.20.0-beta.2
+ENV HUMHUB_VERSION 0.20.0
 ENV HUMHUB_DIR_NAME humhub-$HUMHUB_VERSION
 ENV HUMHUB_DOWNLOAD_URL http://downloads.sourceforge.net/project/humhub/$HUMHUB_DIR_NAME.tar.gz
 
@@ -28,9 +28,7 @@ RUN service apache2 stop
 RUN a2enmod ssl
 RUN a2enmod rewrite
 RUN a2dismod status
-RUN a2dissite default
 RUN a2dissite default-ssl
-RUN a2dissite phpmyadmin
 
 ADD humhub-ssl.conf /etc/apache2/sites-available/humhub-ssl.conf
 RUN a2ensite humhub-ssl.conf
