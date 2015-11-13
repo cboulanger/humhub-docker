@@ -29,6 +29,7 @@ RUN a2enmod ssl
 RUN a2enmod rewrite
 RUN a2dismod status
 RUN a2dissite default-ssl
+RUN a2dissite 000-default
 
 ADD humhub-ssl.conf /etc/apache2/sites-available/humhub-ssl.conf
 RUN a2ensite humhub-ssl.conf
