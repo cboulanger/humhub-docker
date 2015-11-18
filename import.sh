@@ -24,9 +24,21 @@ fi
 if [ -f $data_dir/uploads.tgz ]
 then
   echo "Migrating file data..."
-  rm -rf $humhub_path/uploads
   tar -xzf $data_dir/uploads.tgz -C $humhub_path/
 fi
+
+if [ -f $data_dir/protected.tgz ]
+then
+  echo "Migrating protected data..."
+  tar -xzf $data_dir/protected.tgz -C $humhub_path/
+fi
+
+if [ -f $data_dir/themes.tgz ]
+then
+  echo "Migrating themes..."
+  tar -xzf $data_dir/themes.tgz -C $humhub_path/
+fi
+
 
 # Certificate and certificate key
 if [[ -f $data_dir/$certificate_file && -f $data_dir/$certificate_key_file ]]
