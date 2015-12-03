@@ -14,8 +14,8 @@ killall mysqld
 echo "Database initialized ..."
 sleep 5s
 
-# Install cron jobs
-(crontab -l ; echo "*/5 * * * * su -c \"/var/www/humhub/protected/yii  cron/hourly\" www-data    >/dev/null 2>&1") | crontab -
-(crontab -l ; echo "0 18 * * * su -c \"/var/www/humhub/protected/yii  cron/daily\" www-data >/dev/null 2>&1") | crontab -
+# Install cron jobs for user www-data
+(crontab -u www-data -l ; echo "30 * * * * /var/www/humhub/protected/yii cron/hourly >/dev/null 2>&1") | crontab -u www-data -
+(crontab -u www-data -l ; echo "00 18 * * * /var/www/humhub/protected/yii cron/daily >/dev/null 2>&1") | crontab -u www-data -
 echo "Installed cron jobs ..." 
 
