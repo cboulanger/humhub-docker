@@ -34,6 +34,10 @@ RUN a2dissite 000-default
 ADD humhub-ssl.conf /etc/apache2/sites-available/humhub-ssl.conf
 RUN a2ensite humhub-ssl.conf
 
+# MySql config
+
+ADD mysql-utf8.cnf /etc/mysql/conf.d/
+
 # Import existing data for importing (optional)
 
 ADD humhub-data /humhub-data
