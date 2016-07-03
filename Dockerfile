@@ -36,7 +36,7 @@ RUN a2ensite humhub-ssl.conf
 
 # MySql config
 
-ADD mysql-utf8.cnf /etc/mysql/conf.d/
+ADD mysql-utf8.cnf /etc/mysql/conf.d/mysql-utf8.cnf
 
 # Import existing data for importing (optional)
 
