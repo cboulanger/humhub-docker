@@ -19,24 +19,26 @@ RUN tar -xzf $HUMHUB_DIR_NAME.tar.gz
 RUN mv $HUMHUB_DIR_NAME /var/www/humhub
 RUN chown www-data:www-data -R /var/www
 
+# MySql config
+
+ADD mysql-utf8.cnf /etc/mysql/conf.d/mysql-utf8.cnf
+
 # Apache config
 
-ADD pre-conf.sh /pre-conf.sh
-RUN chmod 750 /pre-conf.sh
-RUN (/bin/bash -c /pre-conf.sh)
 RUN service apache2 stop
 RUN a2enmod ssl
 RUN a2enmod rewrite
 RUN a2dismod status
 RUN a2dissite default-ssl
 RUN a2dissite 000-default
-
 ADD humhub-ssl.conf /etc/apache2/sites-available/humhub-ssl.conf
 RUN a2ensite humhub-ssl.conf
 
-# MySql config
+# Run config script
 
-ADD mysql-utf8.cnf /etc/mysql/conf.d/mysql-utf8.cnf
+ADD pre-conf.sh /pre-conf.sh
+RUN chmod 750 /pre-conf.sh
+RUN (/bin/bash -c /pre-conf.sh)
 
 # Import existing data for importing (optional)
 
