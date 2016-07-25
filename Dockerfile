@@ -7,6 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Updates & packages install
 
+RUN apt-get update -y && apt-get upgrade -y
 RUN apt-get install -y -q php5-gd php5-curl php5-sqlite php5-ldap php5-intl php-apc wget cron
 
 ENV HUMHUB_VERSION 1.0.1
