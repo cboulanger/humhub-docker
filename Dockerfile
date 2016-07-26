@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # Updates & packages install
 
-RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
+RUN (apt-get update && apt-get upgrade -y -q -o Dpkg::Options::="--force-confold" && apt-get dist-upgrade -y -q -o Dpkg::Options::="--force-confold" && apt-get -y -q autoclean && apt-get -y -q autoremove)
 RUN apt-get install -y -q php5-gd php5-curl php5-sqlite php5-ldap php5-intl php-apc wget cron
 
 ENV HUMHUB_VERSION 1.0.1
